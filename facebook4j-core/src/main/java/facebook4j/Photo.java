@@ -33,7 +33,7 @@ public interface Photo extends FacebookResponse {
     URL getSource();
     Integer getHeight();
     Integer getWidth();
-    List<Photo.Image> getImages();
+    List<Image> getImages();
     URL getLink();
     Place getPlace();
     Date getCreatedTime();
@@ -42,10 +42,5 @@ public interface Photo extends FacebookResponse {
     PagableList<Comment> getComments();
     PagableList<Like> getLikes();
     Category getAlbum();
-    
-    interface Image {
-        Integer getHeight();
-        Integer getWidth();
-        URL getSource();
-    }
+
 }

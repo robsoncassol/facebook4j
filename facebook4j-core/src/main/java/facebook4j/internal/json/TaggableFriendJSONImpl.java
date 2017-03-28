@@ -1,7 +1,5 @@
 package facebook4j.internal.json;
 
-import static facebook4j.internal.util.z_F4JInternalParseUtil.getRawString;
-import static facebook4j.internal.util.z_F4JInternalParseUtil.getURL;
 import facebook4j.FacebookException;
 import facebook4j.Picture;
 import facebook4j.ResponseList;
@@ -11,6 +9,8 @@ import facebook4j.internal.http.HttpResponse;
 import facebook4j.internal.org.json.JSONArray;
 import facebook4j.internal.org.json.JSONException;
 import facebook4j.internal.org.json.JSONObject;
+
+import static facebook4j.internal.util.z_F4JInternalParseUtil.*;
 
 
 final class TaggableFriendJSONImpl extends FacebookResponseImpl implements TaggableFriend, java.io.Serializable  {

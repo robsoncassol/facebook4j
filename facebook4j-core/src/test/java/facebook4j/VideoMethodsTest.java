@@ -24,7 +24,7 @@ import org.junit.runner.RunWith;
 import java.io.File;
 import java.net.URL;
 
-import static facebook4j.junit.F4JHttpParameterMatchers.hasPostParameter;
+import static facebook4j.junit.F4JHttpParameterMatchers.*;
 import static facebook4j.junit.ISO8601DateMatchers.*;
 import static facebook4j.junit.URLMatchers.*;
 import static org.hamcrest.CoreMatchers.*;
@@ -536,6 +536,55 @@ public class VideoMethodsTest extends MockFacebookTestBase {
             assertThat(facebook.getHttpMethod(), is(RequestMethod.POST));
             assertThat(facebook.getEndpointURL(), is(pathOf("/600000000000001/comments")));
             assertThat(facebook.getHttpParameters(), hasPostParameter("message", "comment message"));
+
+            assertThat(actual, is("1234567890123456"));
+        }
+
+        @Test
+        public void byCommentUpdate() throws Exception {
+            facebook.setMockJSON("mock_json/id.json");
+            String actual = facebook.commentVideo("600000000000001", new CommentUpdate().message("test"));
+            assertThat(facebook.getHttpMethod(), is(RequestMethod.POST));
+            assertThat(facebook.getEndpointURL(), is(pathOf("/600000000000001/comments")));
+
+            assertThat(actual, is("1234567890123456"));
+        }
+
+        @Test
+        public void withAttachmentId() throws Exception {
+            facebook.setMockJSON("mock_json/id.json");
+            CommentUpdate source = new CommentUpdate()
+                    .message("test")
+                    .attachmentId("1122334455667788");
+            String actual = facebook.commentVideo("600000000000001", source);
+            assertThat(facebook.getHttpMethod(), is(RequestMethod.POST));
+            assertThat(facebook.getEndpointURL(), is(pathOf("/600000000000001/comments")));
+
+            assertThat(actual, is("1234567890123456"));
+        }
+
+        @Test
+        public void withAttachmentUrl() throws Exception {
+            facebook.setMockJSON("mock_json/id.json");
+            CommentUpdate source = new CommentUpdate()
+                    .message("test")
+                    .attachmentUrl("https://fortunedotcom.files.wordpress.com/2015/04/467495334.jpg?quality=80&w=840&h=485&crop=1");
+            String actual = facebook.commentVideo("600000000000001", source);
+            assertThat(facebook.getHttpMethod(), is(RequestMethod.POST));
+            assertThat(facebook.getEndpointURL(), is(pathOf("/600000000000001/comments")));
+
+            assertThat(actual, is("1234567890123456"));
+        }
+
+        @Test
+        public void withSource() throws Exception {
+            facebook.setMockJSON("mock_json/id.json");
+            CommentUpdate source = new CommentUpdate()
+                    .message("test")
+                    .source(new Media(new File("src/test/resources/test_image.png")));
+            String actual = facebook.commentVideo("600000000000001", source);
+            assertThat(facebook.getHttpMethod(), is(RequestMethod.POST));
+            assertThat(facebook.getEndpointURL(), is(pathOf("/600000000000001/comments")));
 
             assertThat(actual, is("1234567890123456"));
         }

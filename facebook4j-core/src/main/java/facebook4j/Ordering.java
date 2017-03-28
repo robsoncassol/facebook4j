@@ -18,25 +18,10 @@ package facebook4j;
 
 /**
  * @author Ryuji Yamashita - roundrop at gmail.com
+ * @since Facebook4J 2.4.0
  */
-public final class Version {
-    private static final String VERSION = "2.4.3";
-    private static final String TITLE = "Facebook4J";
-
-    private Version() {
-        throw new AssertionError();
-    }
-
-    public static String getVersion() {
-        return VERSION;
-    }
-
-    /**
-     * prints the version string
-     *
-     * @param args will be just ignored.
-     */
-    public static void main(String[] args) {
-        System.out.println(TITLE + " " + VERSION);
-    }
+public enum Ordering {
+    CHRONOLOGICAL,
+    REVERSE_CHRONOLOGICAL,
+    ;
 }

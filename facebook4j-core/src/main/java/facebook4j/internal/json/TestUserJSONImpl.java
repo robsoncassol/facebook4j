@@ -16,7 +16,6 @@
 
 package facebook4j.internal.json;
 
-import static facebook4j.internal.util.z_F4JInternalParseUtil.getRawString;
 import facebook4j.FacebookException;
 import facebook4j.ResponseList;
 import facebook4j.TestUser;
@@ -25,6 +24,8 @@ import facebook4j.internal.http.HttpResponse;
 import facebook4j.internal.org.json.JSONArray;
 import facebook4j.internal.org.json.JSONException;
 import facebook4j.internal.org.json.JSONObject;
+
+import static facebook4j.internal.util.z_F4JInternalParseUtil.*;
 
 /**
  * @author Ryuji Yamashita - roundrop at gmail.com
